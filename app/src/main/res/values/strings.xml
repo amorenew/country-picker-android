@@ -1,4 +1,5 @@
 <resources>
   <string name="app_name">Country-Picker</string>
   <string name="pick_country">Pick Country</string>
+  <string name="select_dial_code">Select Dial Code</string>
 </resources>
