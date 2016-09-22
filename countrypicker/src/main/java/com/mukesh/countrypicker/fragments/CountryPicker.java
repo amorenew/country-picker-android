@@ -17,6 +17,7 @@ import android.widget.ListView;
 
 import com.mukesh.countrypicker.Constants;
 import com.mukesh.countrypicker.R;
+import com.mukesh.countrypicker.Util;
 import com.mukesh.countrypicker.adapters.CountryListAdapter;
 import com.mukesh.countrypicker.interfaces.CountryPickerListener;
 import com.mukesh.countrypicker.models.Country;
@@ -44,48 +45,10 @@ public class CountryPicker extends DialogFragment implements Comparator<Country>
   private CountryPickerListener listener;
   private Context context;
 
-  public void setListener(CountryPickerListener listener) {
-    this.listener = listener;
-  }
-
-  public EditText getSearchEditText() {
-    return searchEditText;
-  }
-
-  public ListView getCountryListView() {
-    return countryListView;
-  }
-
   public static Currency getCurrencyCode(String countryCode) {
     try {
       return Currency.getInstance(new Locale("en", countryCode));
     } catch (Exception ignored) {
-    }
-    return null;
-  }
-
-  private List<Country> getAllCountries() {
-    if (allCountriesList == null) {
-      try {
-        allCountriesList = new ArrayList<>();
-        String allCountriesCode = readEncodedJsonString();
-        JSONArray countryArray = new JSONArray(allCountriesCode);
-        for (int i = 0; i < countryArray.length(); i++) {
-          JSONObject jsonObject = countryArray.getJSONObject(i);
-          String countryDialCode = jsonObject.getString("dial_code");
-          String countryCode = jsonObject.getString("code");
-          Country country = new Country();
-          country.setCode(countryCode);
-          country.setDialCode(countryDialCode);
-          allCountriesList.add(country);
-        }
-        Collections.sort(allCountriesList, this);
-        selectedCountriesList = new ArrayList<>();
-        selectedCountriesList.addAll(allCountriesList);
-        return allCountriesList;
-      } catch (Exception e) {
-        e.printStackTrace();
-      }
     }
     return null;
   }
@@ -104,6 +67,43 @@ public class CountryPicker extends DialogFragment implements Comparator<Country>
     bundle.putString("dialogTitle", dialogTitle);
     picker.setArguments(bundle);
     return picker;
+  }
+
+  public void setListener(CountryPickerListener listener) {
+    this.listener = listener;
+  }
+
+  public EditText getSearchEditText() {
+    return searchEditText;
+  }
+
+  public ListView getCountryListView() {
+    return countryListView;
+  }
+
+  private List<Country> getAllCountries() {
+    if (allCountriesList == null) {
+      try {
+        allCountriesList = new ArrayList<>();
+        String allCountriesCode = Util.getRawString(context, R.raw.country_list);
+        JSONArray countryArray = new JSONArray(allCountriesCode);
+        for (int i = 0; i < countryArray.length(); i++) {
+          JSONObject jsonObject = countryArray.getJSONObject(i);
+          Country country = new Country();
+          country.setId(jsonObject.getInt("CountryId"));
+          country.setCode(jsonObject.getString("CountryISO2"));
+          country.setDialCode(jsonObject.getString("DialingCode"));
+          allCountriesList.add(country);
+        }
+        Collections.sort(allCountriesList, this);
+        selectedCountriesList = new ArrayList<>();
+        selectedCountriesList.addAll(allCountriesList);
+        return allCountriesList;
+      } catch (Exception e) {
+        e.printStackTrace();
+      }
+    }
+    return null;
   }
 
   @Override public View onCreateView(LayoutInflater inflater, ViewGroup container,
