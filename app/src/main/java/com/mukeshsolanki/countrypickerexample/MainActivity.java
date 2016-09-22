@@ -27,8 +27,9 @@ public class MainActivity extends AppCompatActivity {
 
   private void setListener() {
     mCountryPicker.setListener(new CountryPickerListener() {
-      @Override public void onSelectCountry(String name, String code, String dialCode,
-          int flagDrawableResID) {
+      @Override
+      public void onSelectCountry(int id, String name, String code, String dialCode,
+                                  int flagDrawableResID) {
         mCountryNameTextView.setText(name);
         mCountryIsoCodeTextView.setText(code);
         mCountryDialCodeTextView.setText(dialCode);
