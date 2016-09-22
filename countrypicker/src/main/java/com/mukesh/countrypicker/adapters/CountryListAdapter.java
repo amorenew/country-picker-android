@@ -71,14 +71,16 @@ public class CountryListAdapter extends BaseAdapter {
         if (convertView == null) {
             cell = new Cell();
             cellView = inflater.inflate(R.layout.row, null);
-            cell.textView = (TextView) cellView.findViewById(R.id.row_title);
+            cell.tvDialCode = (TextView) cellView.findViewById(R.id.tvDialCode);
+            cell.tvCountryName = (TextView) cellView.findViewById(R.id.tvCountryName);
             cell.imageView = (ImageView) cellView.findViewById(R.id.row_icon);
             cellView.setTag(cell);
         } else {
             cell = (Cell) cellView.getTag();
         }
 
-        cell.textView.setText(country.getName());
+        cell.tvDialCode.setText(country.getDialCode());
+        cell.tvCountryName.setText(country.getName());
 
         String drawableName = "flag_" + country.getCode().toLowerCase(Locale.ENGLISH);
         int drawableId = getResId(drawableName);
@@ -89,7 +91,8 @@ public class CountryListAdapter extends BaseAdapter {
     }
 
     static class Cell {
-        public TextView textView;
+        public TextView tvDialCode;
+        public TextView tvCountryName;
         public ImageView imageView;
     }
 }
