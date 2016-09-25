@@ -7,7 +7,6 @@ import android.support.v4.app.DialogFragment;
 import android.telephony.TelephonyManager;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,7 +16,6 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.mukesh.countrypicker.Constants;
 import com.mukesh.countrypicker.R;
 import com.mukesh.countrypicker.Util;
 import com.mukesh.countrypicker.adapters.CountryListAdapter;
@@ -53,11 +51,6 @@ public class CountryPicker extends DialogFragment implements Comparator<Country>
         } catch (Exception ignored) {
         }
         return null;
-    }
-
-    private static String readEncodedJsonString() throws java.io.IOException {
-        byte[] data = Base64.decode(Constants.ENCODED_COUNTRY_CODE, Base64.DEFAULT);
-        return new String(data, "UTF-8");
     }
 
     /**
