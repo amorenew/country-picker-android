@@ -28,12 +28,11 @@ public class MainActivity extends AppCompatActivity {
   private void setListener() {
     mCountryPicker.setListener(new CountryPickerListener() {
       @Override
-      public void onSelectCountry(int id, String name, String code, String dialCode,
-                                  int flagDrawableResID) {
-        mCountryNameTextView.setText(name);
-        mCountryIsoCodeTextView.setText(code);
-        mCountryDialCodeTextView.setText(dialCode);
-        mCountryFlagImageView.setImageResource(flagDrawableResID);
+      public void onSelectCountry(Country country) {
+        mCountryNameTextView.setText(country.getName());
+        mCountryIsoCodeTextView.setText(country.getCode());
+        mCountryDialCodeTextView.setText(country.getDialCode());
+        mCountryFlagImageView.setImageResource(country.getFlag());
         mCountryPicker.dismiss();
       }
     });
