@@ -1,4 +1,4 @@
-package com.mukesh.countrypicker;
+package com.amorenew.countrypicker;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

@@ -1,4 +1,4 @@
-package com.mukesh.countrypicker;
+package com.amorenew.countrypicker;
 
 import android.content.Context;
 import android.content.res.Resources;

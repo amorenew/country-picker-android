@@ -1,4 +1,4 @@
-package com.mukesh.countrypicker.models;
+package com.amorenew.countrypicker.models;
 
 import android.text.TextUtils;
 

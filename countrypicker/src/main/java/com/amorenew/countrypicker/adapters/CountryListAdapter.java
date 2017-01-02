@@ -1,4 +1,4 @@
-package com.mukesh.countrypicker.adapters;
+package com.amorenew.countrypicker.adapters;
 
 import android.content.Context;
 import android.util.Log;
@@ -9,8 +9,8 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.mukesh.countrypicker.R;
-import com.mukesh.countrypicker.models.Country;
+import com.amorenew.countrypicker.R;
+import com.amorenew.countrypicker.models.Country;
 
 import java.lang.reflect.Field;
 import java.util.List;

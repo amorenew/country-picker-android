@@ -1,6 +1,6 @@
-package com.mukesh.countrypicker.interfaces;
+package com.amorenew.countrypicker.interfaces;
 
-import com.mukesh.countrypicker.models.Country;
+import com.amorenew.countrypicker.models.Country;
 
 /**
  * Created by mukesh on 25/04/16.

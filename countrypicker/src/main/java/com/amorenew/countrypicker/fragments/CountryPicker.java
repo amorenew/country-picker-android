@@ -1,4 +1,4 @@
-package com.mukesh.countrypicker.fragments;
+package com.amorenew.countrypicker.fragments;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -16,11 +16,11 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.mukesh.countrypicker.R;
-import com.mukesh.countrypicker.Util;
-import com.mukesh.countrypicker.adapters.CountryListAdapter;
-import com.mukesh.countrypicker.interfaces.CountryPickerListener;
-import com.mukesh.countrypicker.models.Country;
+import com.amorenew.countrypicker.R;
+import com.amorenew.countrypicker.Util;
+import com.amorenew.countrypicker.adapters.CountryListAdapter;
+import com.amorenew.countrypicker.interfaces.CountryPickerListener;
+import com.amorenew.countrypicker.models.Country;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
