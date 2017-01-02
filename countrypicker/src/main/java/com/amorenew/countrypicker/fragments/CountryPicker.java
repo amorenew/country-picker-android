@@ -58,6 +58,7 @@ public class CountryPicker extends DialogFragment implements Comparator<Country>
      */
     public static CountryPicker newInstance(String dialogTitle) {
         CountryPicker picker = new CountryPicker();
+        picker.getAllCountries();
         Bundle bundle = new Bundle();
         bundle.putString("dialogTitle", dialogTitle);
         picker.setArguments(bundle);
