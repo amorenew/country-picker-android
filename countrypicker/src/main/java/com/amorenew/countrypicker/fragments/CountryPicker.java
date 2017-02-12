@@ -77,6 +77,10 @@ public class CountryPicker extends DialogFragment implements Comparator<Country>
         return countryListView;
     }
 
+    public void setCountryList(List<Country> allCountriesList) {
+        this.allCountriesList = allCountriesList;
+    }
+
     private List<Country> getAllCountries() {
         if (allCountriesList == null || allCountriesList.isEmpty()) {
             try {

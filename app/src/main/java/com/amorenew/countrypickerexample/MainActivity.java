@@ -53,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
         mPickCountryButton = (Button) findViewById(R.id.country_picker_button);
         mCountryFlagImageView = (ImageView) findViewById(R.id.selected_country_flag_image_view);
         mCountryPicker = CountryPicker.newInstance(getString(R.string.select_dial_code));
+//        mCountryPicker.setCountryList(new ArrayList<Country>());
     }
 
     private void getUserCountryInfo() {

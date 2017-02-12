@@ -14,6 +14,7 @@ public class Country {
     private String name;
     private String dialCode;
     private int flag;
+    private String flagImage;
 
     public int getId() {
         return id;
@@ -42,6 +43,10 @@ public class Country {
         }
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public String getName() {
         return name;
     }
@@ -52,5 +57,13 @@ public class Country {
 
     public void setFlag(int flag) {
         this.flag = flag;
+    }
+
+    public String getFlagImage() {
+        return flagImage;
+    }
+
+    public void setFlagImage(String flagImage) {
+        this.flagImage = flagImage;
     }
 }
