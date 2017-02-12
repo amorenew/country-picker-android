@@ -78,7 +78,7 @@ public class CountryPicker extends DialogFragment implements Comparator<Country>
     }
 
     private List<Country> getAllCountries() {
-        if (allCountriesList == null) {
+        if (allCountriesList == null || allCountriesList.isEmpty()) {
             try {
                 allCountriesList = new ArrayList<>();
                 String allCountriesCode = Util.getRawString(context, R.raw.country_list);
