@@ -1,6 +1,8 @@
 package com.amorenew.countrypicker.adapters;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,9 +12,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.amorenew.countrypicker.R;
+import com.amorenew.countrypicker.Util;
 import com.amorenew.countrypicker.models.Country;
+import com.bumptech.glide.load.resource.bitmap.GlideBitmapDrawable;
+import com.bumptech.glide.request.animation.GlideAnimation;
+import com.bumptech.glide.request.target.SimpleTarget;
 
 import java.lang.reflect.Field;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 
@@ -24,6 +31,7 @@ public class CountryListAdapter extends BaseAdapter {
     List<Country> countries;
     LayoutInflater inflater;
     private Context context;
+    private HashMap<String, Bitmap> cachedBitmaps = new HashMap<>();
 
     public CountryListAdapter(Context context, List<Country> countries) {
         super();
@@ -81,13 +89,38 @@ public class CountryListAdapter extends BaseAdapter {
 
         cell.tvDialCode.setText(country.getDialCode());
         cell.tvCountryName.setText(country.getName());
-
-        String drawableName = "flag_" + country.getCode().toLowerCase(Locale.ENGLISH);
-        int drawableId = getResId(drawableName);
-
-        country.setFlag(drawableId);
-        cell.imageView.setImageResource(drawableId);
+        if (country.getFlagImage() != null && !country.getFlagImage().isEmpty()) {
+            loadImageUrl(cell.imageView, country.getFlagImage());
+        } else {
+            String drawableName = "flag_" + country.getCode().toLowerCase(Locale.ENGLISH);
+            int drawableId = getResId(drawableName);
+            country.setFlag(drawableId);
+            cell.imageView.setImageResource(drawableId);
+        }
         return cellView;
+    }
+
+    private void loadImageUrl(final ImageView imageView, final String imageUrl) {
+        if (cachedBitmaps.get(imageUrl) != null) {
+            imageView.setImageBitmap(cachedBitmaps.get(imageUrl));
+        } else {
+            SimpleTarget target = new SimpleTarget<GlideBitmapDrawable>() {
+                @Override
+                public void onResourceReady(GlideBitmapDrawable bitmap, GlideAnimation glideAnimation) {
+                    // do something with the bitmap
+                    // for demonstration purposes, let's just set it to an ImageView
+                    imageView.setImageBitmap(bitmap.getBitmap());
+                    cachedBitmaps.put(imageUrl, bitmap.getBitmap());
+                }
+
+                @Override
+                public void onLoadFailed(Exception e, Drawable errorDrawable) {
+                    super.onLoadFailed(e, errorDrawable);
+                    imageView.setImageResource(R.drawable.error_flag);
+                }
+            };
+            Util.getInstance().loadImage(context, imageUrl, target, R.drawable.error_flag);
+        }
     }
 
     static class Cell {
