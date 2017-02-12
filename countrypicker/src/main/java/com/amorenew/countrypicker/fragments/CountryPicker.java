@@ -103,7 +103,10 @@ public class CountryPicker extends DialogFragment implements Comparator<Country>
                 e.printStackTrace();
             }
         }
-        return null;
+        Collections.sort(allCountriesList, this);
+        selectedCountriesList = new ArrayList<>();
+        selectedCountriesList.addAll(allCountriesList);
+        return allCountriesList;
     }
 
     @Override

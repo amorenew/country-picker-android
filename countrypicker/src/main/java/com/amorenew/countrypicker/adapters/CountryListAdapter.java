@@ -89,8 +89,19 @@ public class CountryListAdapter extends BaseAdapter {
 
         cell.tvDialCode.setText(country.getDialCode());
         cell.tvCountryName.setText(country.getName());
+
         if (country.getFlagImage() != null && !country.getFlagImage().isEmpty()) {
-            loadImageUrl(cell.imageView, country.getFlagImage());
+            int start = country.getFlagImage().lastIndexOf("/") + 1;
+            int end = country.getFlagImage().lastIndexOf(".");
+            String flagCode = country.getFlagImage().substring(start, end);
+            String drawableName = "flag_" + flagCode.toLowerCase();
+            int drawableId = getResId(drawableName);
+            if (drawableId > 0) {
+                country.setFlag(drawableId);
+                cell.imageView.setImageResource(drawableId);
+            } else {
+                loadImageUrl(cell.imageView, country.getFlagImage());
+            }
         } else {
             String drawableName = "flag_" + country.getCode().toLowerCase(Locale.ENGLISH);
             int drawableId = getResId(drawableName);
