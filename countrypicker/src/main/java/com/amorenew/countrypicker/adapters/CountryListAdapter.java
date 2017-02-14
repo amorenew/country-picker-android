@@ -87,7 +87,7 @@ public class CountryListAdapter extends BaseAdapter {
             cell = (Cell) cellView.getTag();
         }
 
-        cell.tvDialCode.setText(country.getDialCode());
+        cell.tvDialCode.setText(" (" + country.getDialCode() + ") ");
         cell.tvCountryName.setText(country.getName());
 
         if (country.getFlagImage() != null && !country.getFlagImage().isEmpty()) {
