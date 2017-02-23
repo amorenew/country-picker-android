@@ -174,12 +174,6 @@
     "DialingCode": "267"
   },
   {
-    "CountryISO2": "BV",
-    "CountryId": 31,
-    "CountryName": "Bouvet Island",
-    "DialingCode": "NONE"
-  },
-  {
     "CountryISO2": "BR",
     "CountryId": 32,
     "CountryName": "Brazil",
@@ -562,12 +556,6 @@
     "CountryId": 96,
     "CountryName": "Haiti",
     "DialingCode": "509"
-  },
-  {
-    "CountryISO2": "HM",
-    "CountryId": 97,
-    "CountryName": "Heard Island and McDonald Islands",
-    "DialingCode": "NONE"
   },
   {
     "CountryISO2": "HN",
@@ -1026,12 +1014,6 @@
     "DialingCode": "63"
   },
   {
-    "CountryISO2": "PN",
-    "CountryId": 175,
-    "CountryName": "Pitcairn",
-    "DialingCode": "NONE"
-  },
-  {
     "CountryISO2": "PL",
     "CountryId": 176,
     "CountryName": "Poland",
@@ -1396,12 +1378,6 @@
     "CountryId": 236,
     "CountryName": "United States",
     "DialingCode": "1"
-  },
-  {
-    "CountryISO2": "UM",
-    "CountryId": 237,
-    "CountryName": "United States Minor Outlying Islands",
-    "DialingCode": "NONE"
   },
   {
     "CountryISO2": "UY",
