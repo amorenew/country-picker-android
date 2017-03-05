@@ -170,6 +170,8 @@ public class CountryPicker extends DialogFragment implements Comparator<Country>
         for (Country country : allCountriesList) {
             if (country.getName().toLowerCase(Locale.ENGLISH).contains(text.toLowerCase())) {
                 selectedCountriesList.add(country);
+            }else if (country.getDialCode().toLowerCase(Locale.ENGLISH).contains(text.toLowerCase())){
+                selectedCountriesList.add(country);
             }
         }
         adapter.notifyDataSetChanged();
