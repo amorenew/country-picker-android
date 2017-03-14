@@ -56,13 +56,22 @@ public class CountryPicker extends DialogFragment implements Comparator<Country>
     /**
      * To support show as dialog
      */
-    public static CountryPicker newInstance(String dialogTitle) {
+    public static CountryPicker newInstance(String dialogTitle, List<Country> countries) {
         CountryPicker picker = new CountryPicker();
+        if (countries != null)
+            picker.setCountryList(countries);
         picker.getAllCountries();
         Bundle bundle = new Bundle();
         bundle.putString("dialogTitle", dialogTitle);
         picker.setArguments(bundle);
         return picker;
+    }
+
+    /**
+     * To support show as dialog
+     */
+    public static CountryPicker newInstance(String dialogTitle) {
+        return newInstance(dialogTitle, null);
     }
 
     public void setListener(CountryPickerListener listener) {
@@ -170,7 +179,7 @@ public class CountryPicker extends DialogFragment implements Comparator<Country>
         for (Country country : allCountriesList) {
             if (country.getName().toLowerCase(Locale.ENGLISH).contains(text.toLowerCase())) {
                 selectedCountriesList.add(country);
-            }else if (country.getDialCode().toLowerCase(Locale.ENGLISH).contains(text.toLowerCase())){
+            } else if (country.getDialCode().toLowerCase(Locale.ENGLISH).contains(text.toLowerCase())) {
                 selectedCountriesList.add(country);
             }
         }
