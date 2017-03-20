@@ -123,7 +123,7 @@ public class CountryPicker extends DialogFragment implements Comparator<Country>
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.country_picker, null);
         Bundle args = getArguments();
-        // remove title from dialogfragment
+        // remove title from dialog fragment
         getDialog().getWindow().requestFeature(Window.FEATURE_NO_TITLE);
         if (args != null) {
             String dialogTitle = args.getString("dialogTitle");
